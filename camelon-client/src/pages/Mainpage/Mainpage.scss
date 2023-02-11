@@ -1,0 +1,49 @@
+/* Define the grid */
+.container {
+    display: grid;
+    grid-template-columns: 16rem 1fr; 
+    grid-template-rows: 60px auto auto 60px;
+    grid-template-areas: 
+                "sidebar header" 
+                "sidebar main" 
+                "sidebar main"
+                "footer footer";
+    min-height: 100vh;
+
+    aside {
+        grid-area: sidebar;
+        border-right: solid 1px;
+    }
+
+    header {
+        grid-area: header;
+        background-color: lavender;
+        
+    }
+
+    main {
+        grid-area: main;
+        margin: 10px 20px;
+        
+    }
+
+    footer {
+        grid-area: footer;
+        background-color: lightgreen;
+    }
+
+}
+
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas: 
+                        "sidebar"
+                        "header"
+                        "main"
+                        "main"
+                        "footer";
+    }
+    
+}

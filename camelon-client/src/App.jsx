@@ -1,20 +1,14 @@
-
-import React, { useState } from 'react';
-import Filterbar from "./components/Filterbar"
-import MenuController from "./components/MenuController"
-import Display from './components/Display';
-
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import './App.css'
+import Mainpage from './pages/Mainpage/Mainpage'
 function App() {
-  
-  const [state, setstate] = useState("Hello") 
-  
-  return (
-    
-    <main className="text-black-400 bg-white-100 body-font">
-      <Filterbar />
-      <MenuController />
-    </main>
+  const [count, setCount] = useState(0)
 
+  return (
+    <div className="App">
+      <Mainpage />
+    </div>
   )
 }
 
