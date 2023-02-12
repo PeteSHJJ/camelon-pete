@@ -1,12 +1,15 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { locations } from './locations'
+import { locations } from './data/locations'
+import { news_info } from './data/news_info'
 
+console.log(news_info)
 const initialState = {
-    locations: locations,
+    news_info: news_info,
+    locations: locations
 }
 
 const camelonSlice = createSlice({
-    name: "newsListing",
+    name: "newsLocationList",
     initialState,
     reducers: {
 
@@ -14,3 +17,4 @@ const camelonSlice = createSlice({
 })
 
 export default camelonSlice.reducer
+

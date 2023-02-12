@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup  } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup,   } from "react-leaflet";
 import L from "leaflet";
-import "leaflet.heat";
 import 'leaflet/dist/leaflet.css';
 import './map.scss'
 
@@ -10,8 +9,7 @@ import { useSelector } from "react-redux";
 
 function Heatmap() {
   
-
-  const { locations } = useSelector((state) => state.locations)
+  
 
   // useEffect(() => {
   //   var map = L.map("map").setView([-37.87, 175.475], 12);
@@ -36,6 +34,8 @@ function Heatmap() {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+       
+
         
 </MapContainer>
 
