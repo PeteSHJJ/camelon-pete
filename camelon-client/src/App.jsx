@@ -4,6 +4,8 @@ import "./App.css";
 import Mainpage from "./pages/Mainpage/Mainpage";
 import { Provider } from "react-redux";
 import Store from "./store/Store";
+import 'leaflet/dist/leaflet.css'
+
 
 function App() {
   const [count, setCount] = useState(0);

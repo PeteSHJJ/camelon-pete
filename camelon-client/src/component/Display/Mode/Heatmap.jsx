@@ -1,47 +1,79 @@
 import React, { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup,   } from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  Polyline,
+  Popup,
+  TileLayer,
+  useMap,
+} from "react-leaflet";
 import L from "leaflet";
-import 'leaflet/dist/leaflet.css';
-import './map.scss'
-
+import "leaflet.heat";
+import "./map.scss";
 
 import { useSelector } from "react-redux";
 
+// const HeatMap = () => {
+//   const map = useMap();
+
+//   const points = locations ? locations.map((location) => {
+//     return [location.latitude, location.longitude]
+//   }) : [];
+
+//   useEffect(() => {
+//     L.heatLayer( coords , {
+//       radius: 8,
+//     }).addTo(map);
+//   });
+
+//   return null;
+// };
+
 function Heatmap() {
-  
-  
+  const { locations } = useSelector((state) => state.data);
+  const { user_current_location } = useSelector((state) => state.data);
 
-  // useEffect(() => {
-  //   var map = L.map("map").setView([-37.87, 175.475], 12);
+  function SetView({ coords }) {
+    const map = useMap();
+    map.setView(coords, map.getZoom());
+    // var newMarker = new L.circle(coords).addTo(map);
+    // var marker = L.circle(coords, 1609.34, {
+    //   color: "blue",
+    //   fillColor: "blue",
+    // }).addTo(map);
+    return null;
+  }
 
-  //   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  //     attribution:
-  //       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  //   }).addTo(map);
+  const HeatMap = () => {
+    const map = useMap();
 
-  //   const points = locations
-  //     ? locations.map((location) => {
-  //         return [location.latitude, location.longitude];
-  //       })
-  //     : [];
+    useEffect(() => {
+      const points = locations
+        ? locations.map((location) => {
+            return [location.latitude, location.longitude, 15];
+          })
+        : [];
 
-  //   L.heatLayer(points).addTo(map);
-  // }, []);
-  
+      L.heatLayer(points, { radius: 14 }).addTo(map);
+    }, []);
+  };
+
   return (
     <MapContainer center={[13.751, 100.492]} zoom={13}>
-    <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-       
+      <TileLayer
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
 
-        
-</MapContainer>
-
-  )
+      <HeatMap />
+      <SetView
+        coords={[
+          user_current_location.latitude,
+          user_current_location.longitude,
+        ]}
+      />
+    </MapContainer>
+  );
 }
 
-
-
-export default Heatmap
+export default Heatmap;
