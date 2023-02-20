@@ -1,4 +1,5 @@
 import React from 'react';
+import { slide as Menu } from "react-burger-menu";
 import logo from "../../assets/camelon-logo.png";
 import './Sidebar.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,6 +7,7 @@ import {  faHome, faCircleInfo, faCircleQuestion  } from "@fortawesome/free-soli
 
 function Sidebar() {
   return (
+    
     <div className="sidebar-container">
         <div className='sidebar-header'>
             <img src={logo}></img>
@@ -18,6 +20,7 @@ function Sidebar() {
             <a href='#'><FontAwesomeIcon icon={faCircleQuestion} /> <div className='sidebar-nav-text'>About Camelon</div></a>
         </div>
     </div>
+   
   )
 }
 
